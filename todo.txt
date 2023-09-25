@@ -1,0 +1,6 @@
+fix constraint programming! YIKES
+DONE daimax format for cnf
+DONE sat solver (kissat)
+proofread mmv section 5 again
+fix diagram
+
