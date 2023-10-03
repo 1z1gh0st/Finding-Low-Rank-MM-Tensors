@@ -1,4 +1,5 @@
 # TODO:
+#   - FEATURE   | Add lexicographic constraint
 #   - FEATURE   | Add last constraint
 #   - TEST      | Run for long time on harder instance
 #   - BUG       | Look into the sums that look as follows:
@@ -13,7 +14,7 @@ from functools import reduce
 
 now = datetime.now()
 output_per_line = 7
-debug_on = False
+debug_on = True
 f = open('log.txt', 'w')
 
 def get_var(char, subscript1, subscript2, superscript):
@@ -219,7 +220,7 @@ t0 = time.time()
 plog('starting solver at time: {}...'.format(now.strftime('%H:%M:%S')))
 
 # See what is happening
-set_option(verbose = 1)
+set_option(verbose = 10)
 
 # Run solver
 result = solver.check()
