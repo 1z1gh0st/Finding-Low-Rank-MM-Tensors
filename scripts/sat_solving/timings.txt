@@ -1,0 +1,8 @@
+2 2 2 7 kissat 0.18s
+2 2 2 6 kissat 122.67s
+
+2 2 2 7 yalsat 3.83s
+
+
+2 2 3 11 kissat 3.41s
+2 2 3 11 yalsat 24881.44s

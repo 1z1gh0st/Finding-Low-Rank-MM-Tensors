@@ -2,6 +2,7 @@ import time
 from datetime import datetime
 from z3 import *
 from functools import reduce
+from itertools import combinations
 
 now = datetime.now()
 output_per_line = 7
@@ -82,6 +83,53 @@ def apply_tseitin(expr):
     tseitin_cnf = Tactic('tseitin-cnf')
     return tseitin_cnf(expr)
 
+def get_sublists(lst, n):
+    N = len(lst)
+    result = []
+    num_dels = N - n
+    if num_dels < 0:
+        return []
+    del_combs = list(combinations(range(N), num_dels))
+    for del_idxs in del_combs:
+        sblst = [lst[i] for i in range(N) if i not in del_idxs]
+        result.append(sblst)
+    return result
+
+def add_counting_clauses(vars, thresh):
+    valid_combns = get_sublists(vars, thresh)
+    for sublist in valid_combns:
+        formula = And(sublist)
+        print(formula)
+        cnf = apply_tseitin(formula)
+        print(cnf)
+        for clause in cnf:
+            all_clauses.append(clause)
+            solver.add(clause)
+
+def add_lexicographic_constraint():
+    for l in range(r-1):
+        vector_l = []
+        vector_l_plus_one = []
+        for i1, i2 in nm_pairs:
+            vector_l.append(variables[f'α{i1+1}{i2+1}^{l+1}'])
+            vector_l_plus_one.append(variables[f'α{i1+1}{i2+1}^{l+2}'])
+        for j1, j2 in mp_pairs:
+            vector_l.append(variables[f'β{j1+1}{j2+1}^{l+1}'])
+            vector_l_plus_one.append(variables[f'β{j1+1}{j2+1}^{l+2}'])
+        lex_constraint = in_order(vector_l, vector_l_plus_one)
+        solver.add(lex_constraint)
+
+# Input: two vectors of variables
+def in_order(vectorA, vectorB):
+    # If vectorA is empty we are definitely in_order
+    if not vectorA:
+        return True
+    # If vectorB is empty while vectorA is not we are definitely **NOT** in_order
+    if not vectorB:
+        return False
+    # If neither are empty, compare the first elements and recurse
+    return Or(vectorA[0] < vectorB[0], And(vectorA[0] == vectorB[0], in_order(vectorA[1:], vectorB[1:])))
+
 plog('Field : F_2')
 
 log('recieving input...')
@@ -96,9 +144,12 @@ r = int(input('Enter max rank  <r> : '))
 
 log('n: {}, m: {}, p: {}, r: {}'.format(n,m,p,r))
 
+nm_pairs = [(i,j) for i in range(n) for j in range(m)]
+mp_pairs = [(i,j) for i in range(m) for j in range(p)]
+np_pairs = [(i,j) for i in range(n) for j in range(p)]
 log('initializing solver...')
 
-cnf_file = open(f'rank_{n}{m}{p}_leq_{r}_unformatted.txt', 'w')
+cnf_file = open(f'unformatted_cnf_files/rank_{n}{m}{p}_leq_{r}_unformatted.txt', 'w')
 
 # Create a Z3 solver instance
 solver = Solver()
@@ -176,6 +227,27 @@ for i1 in range(1, n + 1):
                             all_clauses.append(clause)
                             solver.add(clause)
 
+add_lexicographic_constraint()
+# gh0st code
+'''
+# Require that no M_i is unused
+for l in range(r):
+    zero_equality_constraints = []
+    for i, j in np_pairs:
+        zero_equality_constraints.append(Not(variables[f'γ{i+1}{j+1}^{l+1}']))
+    #zero_eqality_constraints = [(variables[f'γ{i+1}{j+1}^{l+1}'] == 0) for i, j in np_pairs]
+    constraint = Not(And(zero_equality_constraints))
+    cnf_formula = apply_tseitin(constraint)
+    for clause in cnf_formula:
+        all_clauses.append(clause)
+        solver.add(clause)
+
+# Require that any C[i][j] uses at least m M_i's
+for i, j in np_pairs:
+    add_counting_clauses([variables[f'γ{i+1}{j+1}^{l+1}'] for l in range(r)], m)
+'''
+
+
 # Start timer
 t0 = time.time()
 
@@ -190,37 +262,11 @@ def print_sexpr(sexpr, level=0):
             print_sexpr(item, level + 1)
 
 # Print the S-expression
-print_sexpr(solver.sexpr())
+print_expr = input('Do you want to print? y/N:')
+if print_expr in ['y', 'Y', 'yes', 'Yes', 'YES']:
+    print_sexpr(solver.sexpr())
 
-# Check if there's a satisfying assignment
-plog('starting solver at time: {}...'.format(now.strftime('%H:%M:%S')))
-if solver.check() == sat:
-    model = solver.model()
-    output = ''
-    counter = 0
-    for var_name in var_names:
-        counter += 1
-        var = variables[var_name]
-        int_result = -1
-        if model[var] == True:
-            int_result = 1
-        elif model[var] == False:
-            int_result = 0
-        output += '{}: {}'.format(var_name, int_result)
-        if counter%output_per_line == 0:
-            output += '\n'
-        else:
-            output += ', '
-    show_output = input('show output? y/N: ')
-    if show_output in ['y','Y','yes','Yes','YES']: plog(output)
-    else: log(output)
-    sol_f = open('solution.txt', 'w')
-    sol_f.write('n={}, m={}, p={}, r={}\n'.format(n,m,p,r))
-    sol_f.write(output)
-else:
-    plog('No satisfying assignment found.')
-
-t1 = time.time()
-delta_t = t1 - t0
-plog('Δt: {} seconds\n'.format(delta_t))
-
+run_solver = input('Do you want to solve? y/N:')
+if run_solver in ['y', 'Y', 'yes', 'Yes', 'YES']:
+    result = solver.check()
+    print(result)

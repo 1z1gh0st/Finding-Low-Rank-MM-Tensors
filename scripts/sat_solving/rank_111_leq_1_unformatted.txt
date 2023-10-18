@@ -1,7 +1,0 @@
-(declare-fun |α11^1| () Bool)
-(declare-fun |β11^1| () Bool)
-(declare-fun |γ11^1| () Bool)
-(assert |α11^1|)
-(assert |β11^1|)
-(assert |γ11^1|)
-

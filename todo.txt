@@ -1,6 +1,6 @@
-fix constraint programming! YIKES
+DONE fix constraint programming! YIKES
 DONE daimax format for cnf
 DONE sat solver (kissat)
-proofread mmv section 5 again
-fix diagram
+DONE proofread mmv section 5 again
+DONE fix diagram
 

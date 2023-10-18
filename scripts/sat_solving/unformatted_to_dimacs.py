@@ -38,6 +38,7 @@ def convert_unformatted_file(filename):
     # Create output file with fixed name
     print('creating output file...')
     output_filename = input_filename.replace('_unformatted', '')
+    output_filename = output_filename.replace('unformatted_cnf_files/', '')
     output_filename = output_filename.replace('.txt', '.cnf')
     output_filename = 'cnf_files/' + output_filename
     output_file = open(output_filename, 'w')

@@ -1,0 +1,10 @@
+[-1,0,1], 2, 2, 2, 7, symmytriesOn=True, inequalitiesOn=True, sat, 106.3170211315155s
+[-1,0,1], 2, 2, 2, 6, symmytriesOn=True, inequalitiesOn=True, unsat, 755.9230527877808s
+[-1,0,1], 2, 2, 2, 1, symmytriesOn=True, inequalitiesOn=True, unsat, 0.2766904830932617s
+[-1,0,1], 2, 2, 2, 7, symmytriesOn=False, inequalitiesOn=False, sat, 139.4784870147705s
+[-1,0,1], 2, 2, 2, 6, symmytriesOn=False, inequalitiesOn=False, unsat, 940.0496373176575s
+[-1,0,1], 2, 2, 3, 11, symmytriesOn=False, inequalitiesOn=False, unknown, 11.11686396598816s
+[-1,0,1], 2, 2, 2, 7, lexicographicOn=True, symmytriesOn=False, inequalitiesOn=False, sat, 49.614880323410034s
+[-1,0,1], 2, 2, 2, 7, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, sat, 203.01362919807434s
+[-1,0,1], 2, 2, 2, 6, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 631.0859684944153s
+[-1,0,1], 2, 2, 3, 11, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unknown, 424204.5678598881s
