@@ -8,3 +8,7 @@
 [-1,0,1], 2, 2, 2, 7, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, sat, 203.01362919807434s
 [-1,0,1], 2, 2, 2, 6, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 631.0859684944153s
 [-1,0,1], 2, 2, 3, 11, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unknown, 424204.5678598881s
+[0,1], 2, 2, 2, 7, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.5248594284057617s
+[0,1], 2, 2, 2, 6, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.13663315773010254s
+[0,1], 2, 2, 3, 11, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.5466599464416504s
+[0,1], 2, 2, 3, 12, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.5731785297393799s

@@ -1,11 +1,5 @@
 # TODO:
-#   - FEATURE   | Add lexicographic constraint
-#   - FEATURE   | Add last constraint
 #   - TEST      | Run for long time on harder instance
-#   - BUG       | Look into the sums that look as follows:
-#       ...+
-#       ...+
-#       ...
 
 import time
 from datetime import datetime
@@ -250,6 +244,6 @@ delta_t = t1 - t0
 print('Δt: {} seconds\n'.format(delta_t))
 
 # Record results here
-line_to_add = f'[-1,0,1], {n}, {m}, {p}, {r}, lexicographicOn={lexicographic}, symmytriesOn={sign_symmetry}, inequalitiesOn={valid_ineq}, {result}, {delta_t}s\n'
+line_to_add = f'[0,1], {n}, {m}, {p}, {r}, lexicographicOn={lexicographic}, symmytriesOn={sign_symmetry}, inequalitiesOn={valid_ineq}, {result}, {delta_t}s\n'
 with open("results.txt", "a") as file:
     file.write(line_to_add)
