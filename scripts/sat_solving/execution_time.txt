@@ -1,4 +1,0 @@
-Execution time for command 'kissat cnf_files/rank_222_leq_7.cnf': 0.00 seconds
-Execution time for command 'kissat cnf_files/rank_222_leq_7.cnf': 0.00 seconds
-Execution time for command 'kissat cnf_files/rank_222_leq_7.cnf': 0.01 seconds
-Execution time for command 'kissat cnf_files/rank_222_leq_7.cn': 0.00 seconds

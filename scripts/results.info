@@ -1,0 +1,18 @@
+sat | [-1, 0, 1] | 2 2 2 6 | 1.177196979522705s | unknown
+Mode: sat | Coef: [-1, 0, 1] | Dim: 2 2 2 7 | Time: 0.3464963436126709s | sat
+Mode: sat | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 0.35393309593200684s | sat
+Mode: sat | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 0.3556504249572754s | sat
+Mode: smt | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 0.20404505729675293s | unsat
+Mode: smt | Coef: [-1, 0, 1] | Dim: 2 2 2 7 | Time: 110.90103793144226s | sat
+Mode: sat | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 0.3631424903869629s | sat
+Mode: smt | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 0.07920312881469727s | unsat
+Mode: smt | Coef: [0, 1] | Dim: 2 2 3 11 | Time: 1.323934555053711s | unsat
+Mode: smt | Coef: [] | Dim: 2 2 2 7 | Time: 0.0055277347564697266s | unsat
+Mode: smt | Coef: [-1, 0, 1] | Dim: 2 2 2 7 | Time: 57.426141023635864s | unknown
+Mode: smt | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 0.07863354682922363s | unsat
+Mode: sat | Coef: [0, 1] | Dim: 2 2 3 11 | Time: 8.260193109512329s | sat
+Mode: sat | Coef: [0, 1] | Dim: 2 3 3 15 | Time: 1552.8316667079926s | unknown
+Mode: sat | Coef: [0, 1] | Dim: 2 3 3 15 | Time: 4.308606863021851s | unknown
+Mode: sat | Coef: [0, 1] | Dim: 2 2 3 11 | Time: 5.693678855895996s | unknown
+Mode: sat | Coef: [0, 1] | Dim: 2 2 2 7 | Time: 5.42010498046875s | sat
+Mode: sat | Coef: [0, 1] | Dim: 2 2 3 11 | Time: 73.61878561973572s | unknown

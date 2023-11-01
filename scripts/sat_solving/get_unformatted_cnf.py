@@ -228,25 +228,6 @@ for i1 in range(1, n + 1):
                             solver.add(clause)
 
 add_lexicographic_constraint()
-# gh0st code
-'''
-# Require that no M_i is unused
-for l in range(r):
-    zero_equality_constraints = []
-    for i, j in np_pairs:
-        zero_equality_constraints.append(Not(variables[f'γ{i+1}{j+1}^{l+1}']))
-    #zero_eqality_constraints = [(variables[f'γ{i+1}{j+1}^{l+1}'] == 0) for i, j in np_pairs]
-    constraint = Not(And(zero_equality_constraints))
-    cnf_formula = apply_tseitin(constraint)
-    for clause in cnf_formula:
-        all_clauses.append(clause)
-        solver.add(clause)
-
-# Require that any C[i][j] uses at least m M_i's
-for i, j in np_pairs:
-    add_counting_clauses([variables[f'γ{i+1}{j+1}^{l+1}'] for l in range(r)], m)
-'''
-
 
 # Start timer
 t0 = time.time()

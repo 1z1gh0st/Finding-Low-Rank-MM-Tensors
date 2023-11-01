@@ -12,3 +12,4 @@
 [0,1], 2, 2, 2, 6, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.13663315773010254s
 [0,1], 2, 2, 3, 11, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.5466599464416504s
 [0,1], 2, 2, 3, 12, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unsat, 0.5731785297393799s
+[0,1], 2, 2, 2, 6, lexicographicOn=True, symmytriesOn=True, inequalitiesOn=True, unknown, 12.579750537872314s
